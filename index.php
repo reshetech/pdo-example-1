@@ -19,17 +19,16 @@ catch (PDOException $e)
 
 $sql = "SELECT c.name AS car_name, w.name AS worker_name
 FROM `car_worker` AS cw
-
 JOIN cars AS c
 ON c.id = cw.car
-
 RIGHT JOIN workers AS w 
 ON w.id = cw.worker";
 
 $query = $dbh -> prepare($sql);
 $query -> execute();
 
-$results = $query -> fetchAll(PDO::FETCH_OBJ); 
+$results = $query -> fetchAll(PDO::FETCH_OBJ);
+
 $carsByWorkers = array(); 
 if($query -> rowCount() > 0)
 {       
